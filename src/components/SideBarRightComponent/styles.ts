@@ -1,18 +1,28 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 411px;
-    height: 88px;
-    display: flex;
+    width: 100%;
+    display: none;
     align-items: center;
     padding: 16px;
     gap: 8px;
+
+    @media only screen and (min-width: 1580px) {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        gap: 8px;
+    }
 `;
 
-export const Text = styled.div`
-    font-size: 24px;
-    font-weight: bold;
-    font-family: Fredoka;
+export const Text = styled.span`
+    @media only screen and (min-width: 1580px) {
+        font-size: 24px;
+        flex-wrap: wrap;
+        font-weight: bold;
+        font-family: Fredoka;
+    }
 `;
 
 export const IconeImg = styled.img`
