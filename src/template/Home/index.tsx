@@ -2,14 +2,26 @@ import SideBarLeftComponent from 'components/SideBarLeftComponent';
 import SideBarRightComponent from 'components/SideBarRightComponent';
 import FeedComponent from 'components/FeedComponent';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import PiusServices from 'services/PiusService';
+import { Piu } from 'interfaces/Piu';
 import * as S from './styles';
 
 const HomeTemplate = () => {
-    const [text, setText] = useState('No que está pensando?');
-
     const [selected, setSelect] = useState(false);
+
+    const [piusArray, setPiusArray] = useState<Piu[]>([]);
+
+    useEffect(() => {
+        const asyncService = async () => {
+            const response = await PiusServices.getPius();
+            setPiusArray(response);
+        };
+
+        asyncService();
+    }, []);
+
     return (
         <S.MainBody>
             <S.HeaderContainer>
@@ -63,34 +75,16 @@ const HomeTemplate = () => {
                     </S.LeftContainerTop>
                 </S.SideBarLeft>
                 <S.Middle>
-                    <FeedComponent
-                        img="/assets/profileGodoy.png"
-                        name="Godoy"
-                        text="O hexa vem com ctz, quem falar o contrário ta bloqueado. Já to avisando!"
-                        heart="26"
-                        emoji="10"
-                    />
-                    <FeedComponent
-                        img="/assets/profileCaina.png"
-                        name="Cainã"
-                        text="Semana de provas foi pegado demais, sinto falta de dormir todas as noites. Quero ter sossego acima disso, vou migrar pra Prod!"
-                        heart="34"
-                        emoji="15"
-                    />
-                    <FeedComponent
-                        img="/assets/profileGodoy.png"
-                        name="Godoy"
-                        text="Ou serião esse empate contra o corinthians foi brincadeira ein. Flamengo tinha todas a condições pra ganhar. Até pq Flamengo >>>"
-                        heart="65"
-                        emoji="29"
-                    />
-                    <FeedComponent
-                        img="/assets/profileGodoy.png"
-                        name="Godoy"
-                        text="Prova de mecânica foi tenebrosa, nem quero ver a nota"
-                        heart="31"
-                        emoji="9"
-                    />
+                    {piusArray.map((piu) => (
+                        <FeedComponent
+                            name={piu.user.username}
+                            text={piu.text}
+                            emoji="10"
+                            img={piu.user.avatar}
+                            heart={piu.likes.length}
+                            id={piu.id}
+                        />
+                    ))}
                 </S.Middle>
                 <S.SideBarRight>
                     <S.RightContainerTop>

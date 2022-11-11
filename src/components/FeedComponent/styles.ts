@@ -1,14 +1,25 @@
 import styled from 'styled-components';
 
 export const Feed = styled.div`
-    width: 784px;
-    height: 184px;
+    width: 600px;
+    height: 224px;
     display: flex;
     flex-direction: column;
     padding: 16px;
-    gap: 8px;
+    gap: 16px;
     border: 1px solid #000000;
     border-radius: 16px;
+
+    @media only screen and (min-width: 1880px) {
+        width: 784px;
+        height: 184px;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 8px;
+        border: 1px solid #000000;
+        border-radius: 16px;
+    }
 `;
 
 export const FeedTop = styled.div`
@@ -22,8 +33,14 @@ export const FeedTop = styled.div`
 
 export const FeedText = styled.div`
     margin-left: 40px;
-    width: 704px;
-    height: 104px;
+    width: 520px;
+    height: 140px;
+
+    @media only screen and (min-width: 1880px) {
+        margin-left: 40px;
+        width: 704px;
+        height: 104px;
+    }
 `;
 
 export const Text = styled.div`

@@ -89,8 +89,17 @@ export const SideBarLeft = styled.div`
     width: 416px;
     height: 100vh;
     background-color: #fafafa;
-    margin-left: 120px;
+    margin-left: 16px;
     border-right: 1px solid #000000;
+
+    @media only screen and (min-width: 1684px) {
+        display: flex;
+        width: 416px;
+        height: 100vh;
+        background-color: #fafafa;
+        margin-left: 120px;
+        border-right: 1px solid #000000;
+    }
 `;
 
 export const LeftContainerTop = styled.div`
@@ -172,8 +181,8 @@ export const RightContainerTop = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 16px 8px 8px 8px;
-    width: 416px;
-    height: 616px;
+    width: 100%;
+    height: 50vh;
     border-radius: 24px;
     background-color: #f1f1f1;
 `;
@@ -206,13 +215,19 @@ export const TitleBottom = styled.span`
 `;
 
 export const SideBarRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 416px;
-    height: 100vh;
-    background-color: #fafafa;
-    margin-right: 120px;
+    display: none;
+    width: 0;
+    height: 0;
+
+    @media only screen and (min-width: 1580px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 22%;
+        height: 100vh;
+        background-color: #fafafa;
+        margin-right: 20px;
+    }
 `;
 
 export const Middle = styled.div`
@@ -220,7 +235,7 @@ export const Middle = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 8px;
-    width: 416px;
+    width: 100%;
     height: 100vh;
     background-color: #fafafa;
     gap: 16px;
